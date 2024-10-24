@@ -1,0 +1,15 @@
+version: '3'
+services:
+  backend:
+    container_name: node_h_checker
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - 8080:3000
+    healthcheck:
+      test: ["CMD", "curl","-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
